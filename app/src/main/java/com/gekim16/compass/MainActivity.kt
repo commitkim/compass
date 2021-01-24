@@ -6,18 +6,14 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
-import android.view.animation.Animation
-import android.view.animation.RotateAnimation
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.math.abs
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private val accelerometerReading = FloatArray(3)
     private val magnetometerReading = FloatArray(3)
     private val orientationAngles = FloatArray(3)
-    private var currentDegree = 0f
 
     private val sensorManager by lazy { getSystemService(Context.SENSOR_SERVICE) as SensorManager }
     private val accelerometer by lazy { sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) }
