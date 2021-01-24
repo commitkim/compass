@@ -10,6 +10,7 @@ import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.abs
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -64,18 +65,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             val azimuthDegrees = -(Math.toDegrees(
                 SensorManager.getOrientation(rotationMatrix, orientationAngles)[0].toDouble()) + 360).toInt() % 360.toFloat()
 
+            // 이미지 회전
+            compass.rotation = azimuthDegrees
 
-            //회전하는 애니메이션을 위해서 사용 현재 위치에서 지정된 위치까지 회전
-            val ra = RotateAnimation(
-                currentDegree,
-                azimuthDegrees,
-                Animation.RELATIVE_TO_SELF, 0.5f,  // 회전하는 축을 중심으로 잡아줌
-                Animation.RELATIVE_TO_SELF, 0.5f
-            )
-            ra.duration = 250 // 회전하는데 걸리는 시간
-            ra.fillAfter = true // 회전 후의 결과를 유지할 것인지 결정
-            compass.startAnimation(ra)
-            currentDegree = azimuthDegrees // 회전 후의 각도를 저장
+            textView.text = String.format(getString(R.string.angle_string), (-compass.rotation.toInt()).toString())
         }
     }
 }

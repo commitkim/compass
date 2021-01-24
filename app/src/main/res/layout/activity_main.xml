@@ -6,10 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/angle_string"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="80dp"
+        android:textSize="30dp" />
+
     <ImageView
         android:id="@+id/compass"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/compass_img" />
+        app:srcCompat="@drawable/compass_color" />
 </FrameLayout>
